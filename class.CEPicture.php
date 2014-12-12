@@ -27,10 +27,10 @@ class CEpiture{
         if (!$this->page_content){return false;}
         switch ($type){
             case 'w':
-                $size = "&amp;w={$size}&amp;zc=1+;a=t";
+                $size = "&w={$size}&zc=1+;a=t";
                 break;
             case 'h':
-                $size = "&amp;h={$size}&amp;zc=1+;a=t";
+                $size = "&h={$size}&zc=1+;a=t";
                 break;
             default:
                 return false;
