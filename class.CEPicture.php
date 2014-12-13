@@ -23,18 +23,9 @@ class CEpiture{
         return $result['result'];
     }
     
-    function GetMangaCover($size,$type){
+    function GetMangaCover($width,$height){
         if (!$this->page_content){return false;}
-        switch ($type){
-            case 'w':
-                $size = "&w={$size}&zc=1+;a=t";
-                break;
-            case 'h':
-                $size = "&h={$size}&zc=1+;a=t";
-                break;
-            default:
-                return false;
-        }
+        $size = "&w={$width}&h={$height}&zc=1+;a=t";
         preg_match('/<div class="mainleft">(?:.|\n)+?<\/ul>/',$this->page_content,$result);
         preg_match_all('/<img src="(.+?)&amp;w=\d+&amp;zc=\d+;a=t"/',$result[0],$result);
         foreach($result[1] as &$key){
