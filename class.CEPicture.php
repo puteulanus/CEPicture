@@ -77,11 +77,15 @@ class CEpiture{
     }
     
     function ExInit(){
-        $this->cookie = file_get_contents($this->api_url);
+        $this->cookie = json_decode(file_get_contents($this->api_url),ture);
     }
     
     function ExLoadPage($url){
         $ch = curl_init();//初始化curl
+        $id = array_rand($this->cookie);
+        $hash = $this->cookie[$id];
+        $cookie = "ipb_member_id={$id}; ipb_pass_hash={$hash}; ";
+        $cookie .= 'uconfig=tl_m-uh_y-rc_0-cats_0-xns_0-ts_l-tr_2-prn_y-dm_l-ar_0-rx_0-ry_0-ms_n-mt_n-cs_a-to_a-sa_y-oi_n-qb_n-tf_n-hp_-hk_-xl_;';
         curl_setopt($ch,CURLOPT_COOKIE,$this->cookie); //设置cookie
         curl_setopt($ch,CURLOPT_URL,$url);//抓取指定网页
         curl_setopt($ch, CURLOPT_HEADER, 0);//设置header
