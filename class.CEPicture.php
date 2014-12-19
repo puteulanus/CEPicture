@@ -49,7 +49,7 @@ class CEpiture{
         $pics = $tmp['pic'];
         preg_match_all('/<a href="(?<link>.+?)">/',$result,$tmp);
         $links = $tmp['link'];
-        for ($i = 1; $i <= floor($pic_num / 20); $i++) {
+        for ($i = 1; $i < floor($pic_num / 20); $i++) {
             $page_content = $this->ExLoadPage($ex_url."?p={$i}");
             preg_match('/<div id="gdt">.+?class="c"/',$page_content,$result);
             $result = $result[0];
